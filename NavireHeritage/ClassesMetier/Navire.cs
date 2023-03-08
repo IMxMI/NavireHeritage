@@ -16,13 +16,13 @@ namespace NavireHeritage.ClassesMetier
         protected int tonnageDWT;
         protected int tonnageActuel;
 
-        protected Navire(string imo, string nom, string latitude, string longitude, int tonnageDT, int tonnageDWT, int tonnageActuel)
+        protected Navire(string imo, string nom, string latitude, string longitude, int tonnageGT, int tonnageDWT, int tonnageActuel)
         {
             this.imo = imo;
             this.nom = nom;
             this.latitude = latitude;
             this.longitude = longitude;
-            this.tonnageGT = tonnageDT;
+            this.tonnageGT = tonnageGT;
             this.tonnageDWT = tonnageDWT;
             this.tonnageActuel = tonnageActuel;
         }
