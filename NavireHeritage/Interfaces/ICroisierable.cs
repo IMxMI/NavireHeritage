@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Station.Interface
 {
-    interface INavCommercable
+    interface INavCroisierable
     {
     }
 }
