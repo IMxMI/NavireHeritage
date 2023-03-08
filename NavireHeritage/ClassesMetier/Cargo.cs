@@ -16,5 +16,7 @@ namespace NavireHeritage.ClassesMetier
         }
 
         public string TypeFret { get => typeFret;}
+
+        public 
     }
 }
