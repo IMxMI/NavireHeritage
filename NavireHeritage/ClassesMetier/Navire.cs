@@ -12,7 +12,7 @@ namespace NavireHeritage.ClassesMetier
         protected readonly string nom;
         protected string latitude;
         protected string longitude;
-        protected int tonnageDT;
+        protected int tonnageGT;
         protected int tonnageDWT;
         protected int tonnageActuel;
 
@@ -22,7 +22,7 @@ namespace NavireHeritage.ClassesMetier
             this.nom = nom;
             this.latitude = latitude;
             this.longitude = longitude;
-            this.tonnageDT = tonnageDT;
+            this.tonnageGT = tonnageDT;
             this.tonnageDWT = tonnageDWT;
             this.tonnageActuel = tonnageActuel;
         }
@@ -32,7 +32,7 @@ namespace NavireHeritage.ClassesMetier
 
         public string Latitude { get => latitude; set => latitude = value; }
         public string Longitude { get => longitude; set => longitude = value; }
-        public int TonnageDT { get => tonnageDT; set => tonnageDT = value; }
+        public int TonnageGT { get => tonnageGT; set => tonnageGT = value; }
         public int TonnageDWT { get => tonnageDWT; set => tonnageDWT = value; }
         public int TonnageActuel { get => tonnageActuel; set => tonnageActuel = value; }
     }
