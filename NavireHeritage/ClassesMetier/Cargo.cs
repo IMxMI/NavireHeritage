@@ -17,20 +17,36 @@ namespace NavireHeritage.ClassesMetier
 
         public string TypeFret { get => typeFret;}
 
+        /// <summary>
+        /// Methode qui permet de chager le navire.
+        /// </summary>
+        /// <param name="qte">Quantité à charger.</param>
         public void Charger(int qte)
         {
-            if (qte <= tonnageDWT - tonnageActuel)
+            if (qte <= tonnageDWT - this.tonnageActuel)
             {
-                tonnageActuel += qte;
+                this.tonnageActuel += qte;
             }
             else
             {
-                throw new Exception("")
+                throw new Exception("Erreur : La capacité du navire n'est pas assez grande.");
             }
         }
 
+        /// <summary>
+        /// Methode qui permet de déchager le navire.
+        /// </summary>
+        /// <param name="qte">Quantité à décharger.</param>
         public void Decharger(int qte)
         {
+            if (qte > this.tonnageActuel)
+            {
+                throw new Exception("Erreur : La quantité de déchagergement est trop grande.");
+            }
+            else
+            {
+                this.tonnageActuel -= qte;
+            }
         }
     }
 }
