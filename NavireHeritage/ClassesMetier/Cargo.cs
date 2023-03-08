@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace NavireHeritage.ClassesMetier
 {
-    class Cargo
+    class Cargo : Navire
     {
+        private string typeFret;
+
+        public Cargo(string imo, string nom, string latitude, string longitude, int tonnageDT, int tonnageDWT, int tonnageActuel, string typeFret) :base(imo, nom, latitude, longitude, tonnageDT, tonnageDWT, tonnageActuel)
+        {
+            this.typeFret = typeFret;
+        }
     }
 }
