@@ -48,6 +48,7 @@
     <Compile Include="ClassesMetier\Navire.cs" />
     <Compile Include="ClassesMetier\Passager.cs" />
     <Compile Include="ClassesMetier\Port.cs" />
+    <Compile Include="ClassesMetier\Stockage.cs" />
     <Compile Include="ClassesMetier\Tanker.cs" />
     <Compile Include="ClassesTechniques\Test.cs" />
     <Compile Include="Exceptions\GestionPortException.cs" />
@@ -59,6 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
