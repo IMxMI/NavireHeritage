@@ -8,7 +8,7 @@
 
     class Stockage : Navire
     {
-        private int numero;
+        private readonly int numero;
         private int capaciteMaxi;
         private int capaciteDispo;
 
