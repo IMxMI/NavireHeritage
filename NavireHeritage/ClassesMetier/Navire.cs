@@ -34,6 +34,6 @@ namespace NavireHeritage.ClassesMetier
         public string Longitude { get => longitude; set => longitude = value; }
         public int TonnageGT { get => tonnageGT;}
         public int TonnageDWT { get => tonnageDWT;}
-        public int TonnageActuel { get => tonnageActuel;}
+        public int TonnageActuel { get => tonnageActuel; set => tonnageActuel = value; }
     }
 }
