@@ -14,7 +14,7 @@
             this.typeFluide = typeFluide;
         }
 
-        public string TypeFluide { get => typeFluide; set => typeFluide = value; }
+        public string TypeFluide { get => typeFluide;}
         
         /// <summary>
         /// Methode qui permet de chager le navire.
