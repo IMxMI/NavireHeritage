@@ -8,5 +8,7 @@ namespace Station.Interface
 {
     interface INavCroisierable
     {
+        void Embarquer(List<Object> objects);
+        void Debarquer(List<Object> objects);
     }
 }
