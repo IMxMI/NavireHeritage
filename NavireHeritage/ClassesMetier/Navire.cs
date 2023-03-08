@@ -10,13 +10,13 @@ namespace NavireHeritage.ClassesMetier
     {
         protected readonly string imo;
         protected readonly string nom;
-        protected string latitude;
-        protected string longitude;
+        protected double latitude;
+        protected double longitude;
         protected int tonnageGT;
         protected int tonnageDWT;
         protected int tonnageActuel;
 
-        protected Navire(string imo, string nom, string latitude, string longitude, int tonnageGT, int tonnageDWT, int tonnageActuel)
+        protected Navire(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel)
         {
             this.imo = imo;
             this.nom = nom;
@@ -30,8 +30,8 @@ namespace NavireHeritage.ClassesMetier
 
         public string Nom => nom;
 
-        public string Latitude { get => latitude; set => latitude = value; }
-        public string Longitude { get => longitude; set => longitude = value; }
+        public double Latitude { get => latitude; set => latitude = value; }
+        public double Longitude { get => longitude; set => longitude = value; }
         public int TonnageGT { get => tonnageGT;}
         public int TonnageDWT { get => tonnageDWT;}
         public int TonnageActuel { get => tonnageActuel; set => tonnageActuel = value; }

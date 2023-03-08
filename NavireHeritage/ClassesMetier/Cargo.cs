@@ -10,7 +10,7 @@ namespace NavireHeritage.ClassesMetier
     {
         private string typeFret;
 
-        public Cargo(string imo, string nom, string latitude, string longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFret) :base(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel)
+        public Cargo(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFret) :base(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel)
         {
             this.typeFret = typeFret;
         }
@@ -19,7 +19,18 @@ namespace NavireHeritage.ClassesMetier
 
         public void Charger(int qte)
         {
-            
+            if (qte <= tonnageDWT - tonnageActuel)
+            {
+                tonnageActuel += qte;
+            }
+            else
+            {
+                throw new Exception("")
+            }
+        }
+
+        public void Decharger(int qte)
+        {
         }
     }
 }
