@@ -14,5 +14,7 @@ namespace NavireHeritage.ClassesMetier
         {
             this.typeFret = typeFret;
         }
+
+        public string TypeFret { get => typeFret;}
     }
 }
