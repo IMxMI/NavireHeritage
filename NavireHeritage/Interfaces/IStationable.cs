@@ -48,10 +48,25 @@ namespace Station.Interface
         /// <returns></returns>
         bool EstParti(String id);
 
+        /// <summary>
+        /// Retourne l'objet dont l'id a été passé en paramètre ou une exception de type Exception.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         object GetUnAttendu(String id);
 
+        /// <summary>
+        /// Retourne l'objet dont l'id a été passé en paramètre ou une exception de type Exception.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         object GetUnArrive(String id);
 
+        /// <summary>
+        /// Retourne l'objet dont l'id a été passé en paramètre ou une exception de type Exception.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         object GetUnParti(String id);
 
     }
