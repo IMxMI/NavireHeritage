@@ -14,6 +14,12 @@ namespace Station.Interface
         /// </summary>
         /// <param name="qte"></param>
         void Decharger(int qte);
+
+        /// <summary>
+        /// Methode qui met à jour le tonnage actuel du nvaire avec la valeur passée en parametre.
+        /// La quantité passée en paramètre est ajoutée à la quantité actuelle.
+        /// </summary>
+        /// <param name="qte"></param>
         void Charger(int qte);
     }
 }
