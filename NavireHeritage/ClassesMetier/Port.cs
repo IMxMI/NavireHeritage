@@ -76,8 +76,15 @@ namespace NavireHeritage.ClassesMetier
         {
             if (objet is Navire navire)
             {
-                this.navireAttendus.Remove(navire.Imo, navire);
-                this.navireArrives.Add(navire.Imo, navire);
+                if (!navireArrives.ContainsKey(navire.Imo))
+                {
+                    this.navireAttendus.Remove(navire.Imo);
+                    this.navireArrives.Add(navire.Imo, navire);
+                }
+                else
+                {
+                    throw new Exception("Le navire" + navire.Imo + "est déja enregistré dans le port.");
+                }
             }
             else
             {
