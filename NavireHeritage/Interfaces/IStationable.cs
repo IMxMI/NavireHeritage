@@ -27,10 +27,25 @@ namespace Station.Interface
         /// <param name="objects"></param>
         void EnregistrerDepart(String objects);
 
+        /// <summary>
+        /// Retourne vrai si l'objet dont l'id est passé en paramètre fait partie des objets attendus dans la station.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         bool EstAttendu(String id);
 
+        /// <summary>
+        /// Retourne vrai si l'objet dont l'id est passé en paramètre fait partie des objets présents dans la station.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         bool EstPresent(String id);
 
+        /// <summary>
+        /// Retourne vrai si l'objet dont l'id est passé en paramètre est parti de la station depuis peu de temps.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         bool EstParti(String id);
 
         object GetUnAttendu(String id);
