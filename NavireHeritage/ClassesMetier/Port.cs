@@ -56,7 +56,15 @@ namespace NavireHeritage.ClassesMetier
         {
             if(objet is Navire navire)
             {
-                this.navireAttendus.Add(navire.Imo, navire);
+                if (!this.navireAttendus.ContainsKey(navire.Imo))
+                {
+                    this.navireAttendus.Add(navire.Imo, navire);
+
+                }
+                else
+                {
+                    throw new Exception("Le navire" + navire.Imo + "est déja enregistré dans le port.");
+                }
             }
             else
             {
@@ -117,20 +125,6 @@ namespace NavireHeritage.ClassesMetier
         public object GetUnParti(string id)
         {
             throw new NotImplementedException();
-        }
-
-       
-            public override string ToString()
-        {
-            return $@"{this.GetType().Name};
-Coordonnées GPS : {this.}
-Nb portiques : {this.}
-Nb quais : {this.}";
-Nb quais : {this.}";
-Nb quais : { this.}";
-Nb quais : { this.}";
-Nb quais : { this.}";
-
         }
     }
     

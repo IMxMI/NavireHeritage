@@ -24,7 +24,7 @@ namespace Station.Interface
         /// <summary>
         /// Méthode qui enregistre le départ d'un objet présent dans la station.
         /// </summary>
-        /// <param name="objects"></param>
+        /// <param name="objet"></param>
         void EnregistrerDepart(Object objet);
 
         /// <summary>
