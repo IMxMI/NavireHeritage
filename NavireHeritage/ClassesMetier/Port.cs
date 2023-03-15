@@ -133,7 +133,24 @@ namespace NavireHeritage.ClassesMetier
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString()
+        {
+            return $@"{this.GetType().Name};
+Port de : {this.Nom};
+Coordonnées GPS : {this.latitude + this.longitude};
+Nb portiques : {this.nbPortique};
+Nb quais croisières : {this.nbQuaisPassager};
+Nb quais tankers : {this.nbQuaisTanker};
+Nb quais super tankers : { this.nbQuaisSuperTanker};
+Nb Navires à quai: { this.navireArrives};
+Nb Navires attendus : { this.navireAttendus};
+Nb Navires à partis: { this.navirePartis};
+Nb Navires en attente: { this.navireEnAttente}";
+
+        }
     }
+
     
 }
 

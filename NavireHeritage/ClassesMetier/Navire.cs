@@ -36,17 +36,6 @@ namespace NavireHeritage.ClassesMetier
         public int TonnageDWT { get => tonnageDWT;}
         public int TonnageActuel { get => tonnageActuel; set => tonnageActuel = value; }
 
-        public override string ToString()
-        {
-            return $@"{this.GetType().Name};
-Coordonnées GPS : {this.}
-Nb portiques : {this.}
-Nb quais croisières : {this.};
-Nb quais tankers : {this.};
-Nb quais super tankers : { this.};
-Nb Navires à quai: { this.};
-Nb Navires attendus : { this.}";
-
-        }
+        
     }
 }
