@@ -27,7 +27,7 @@ namespace NavireHeritage.ClassesMetier
             this.tonnageActuel = tonnageActuel;
         }
         public string Imo => imo;
-
+         
         public string Nom => nom;
 
         public double Latitude { get => latitude; set => latitude = value; }

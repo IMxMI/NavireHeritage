@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NavireHeritage.ClassesMetier
 {
-    class Croisiere : Navire, ICroi
+    class Croisiere : Navire, Station.Interface.INavCroisierable
     {
         private readonly char typeNavireCroisiere;
         private readonly int nbPassagersMaxi;

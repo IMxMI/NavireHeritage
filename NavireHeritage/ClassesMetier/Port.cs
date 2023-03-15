@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Station.Interface;
+
 
 namespace NavireHeritage.ClassesMetier
 {
-    class Port
+    class Port : IStationable
     {
         private readonly string nom;
         private readonly string latitude;
@@ -59,7 +61,7 @@ namespace NavireHeritage.ClassesMetier
         {
             this.navireArrives.Add(navire.Imo, navire);
         }
-
+        
         public void EnregistrerDepart(Navire navire)
         {
             this.navireArrives.Remove(navire.Imo);
@@ -89,5 +91,7 @@ namespace NavireHeritage.ClassesMetier
         {
 
         }
+
+
     }
 }
