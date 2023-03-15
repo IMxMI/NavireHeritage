@@ -64,14 +64,29 @@ namespace NavireHeritage.ClassesMetier
             }
         }           
 
-        public void EnregistrerArrivee(string id)
+        public void EnregistrerArrivee(Object objet)
         {
-            this.navireArrives.Add(id, navire);
+            if (objet is Navire navire)
+            {
+                this.navireAttendus.Remove(navire.Imo, navire);
+                this.navireArrives.Add(navire.Imo, navire);
+            }
+            else
+            {
+                throw new Exception("L'objet n'est pas un navire.");
+            }
         }
 
-        public void EnregistrerDepart(string id)
+        public void EnregistrerDepart(Object objet)
         {
-            throw new NotImplementedException();
+            if (objet is Navire navire)
+            {
+                this.navireArrives.Add(navire.Imo, navire);
+            }
+            else
+            {
+                throw new Exception("L'objet n'est pas un navire.");
+            }
         }
 
         public bool EstAttendu(string id)
@@ -108,9 +123,14 @@ namespace NavireHeritage.ClassesMetier
             public override string ToString()
         {
             return $@"{this.GetType().Name};
-Matricule : {this.Matricule}
-Nom : {this.Nom}
-Annee : {this.anneeArrivee}";
+Coordonnées GPS : {this.}
+Nb portiques : {this.}
+Nb quais : {this.}";
+Nb quais : {this.}";
+Nb quais : { this.}";
+Nb quais : { this.}";
+Nb quais : { this.}";
+
         }
     }
     

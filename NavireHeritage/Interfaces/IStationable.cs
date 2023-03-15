@@ -19,13 +19,13 @@ namespace Station.Interface
         /// Méthode qui enregistre l'arrivée réelle de l'objet. 
         /// </summary>
         /// <param name="objet"></param>
-        void EnregistrerArrivee(String id);
+        void EnregistrerArrivee(Object objet);
 
         /// <summary>
         /// Méthode qui enregistre le départ d'un objet présent dans la station.
         /// </summary>
         /// <param name="objects"></param>
-        void EnregistrerDepart(String id);
+        void EnregistrerDepart(Object objet);
 
         /// <summary>
         /// Retourne vrai si l'objet dont l'id est passé en paramètre fait partie des objets attendus dans la station.
