@@ -8,7 +8,7 @@ using Station.Interface;
 
 namespace NavireHeritage.ClassesMetier
 {
-    class Port : IStationable
+     class Port : IStationable
     {
         private readonly string nom;
         private readonly string latitude;
@@ -52,46 +52,107 @@ namespace NavireHeritage.ClassesMetier
 
         internal Dictionary<string, Navire> NavireEnAttente => navireEnAttente;
 
-        public void EnregistrerArriveePrevue(Navire navire)
+        public void EnregistrerArriveePrevue(Object objet)
         {
-            this.navireAttendus.Add(navire.Imo, navire);
+            if(objet is Navire navire)
+            {
+                this.navireAttendus.Add(navire.Imo, navire);
+            }
+            else
+            {
+                throw new Exception("L'objet n'est pas un navire.");
+            }
+        }           
+
+        public void EnregistrerArrivee(string id)
+        {
+            this.navireArrives.Add(id, navire);
         }
 
-        public void EnregistrerArrivee(Navire navire)
+        public void EnregistrerDepart(string id)
         {
-            this.navireArrives.Add(navire.Imo, navire);
-        }
-        
-        public void EnregistrerDepart(Navire navire)
-        {
-            this.navireArrives.Remove(navire.Imo);
+            throw new NotImplementedException();
         }
 
-        private void AjoutNavireEnAttente(Navire navire)
+        public bool EstAttendu(string id)
         {
-            this.navireEnAttente.Add(navire.Imo, navire);
+            throw new NotImplementedException();
         }
 
-        public bool EstAttendu(String imo)
+        public bool EstPresent(string id)
         {
-            return (navireAttendus.ContainsKey(imo));
+            throw new NotImplementedException();
         }
 
-        public bool EstPresent(String imo)
+        public bool EstParti(string id)
         {
-            return (navireArrives.ContainsKey(imo));
+            throw new NotImplementedException();
         }
 
-        public bool EstEnAttente(String imo)
+        public object GetUnAttendu(string id)
         {
-            return (navireEnAttente.ContainsKey(imo));
+            throw new NotImplementedException();
         }
 
-        public void Chargement(Navire navire)
+        public object GetUnArrive(string id)
         {
-
+            throw new NotImplementedException();
         }
 
+        public object GetUnParti(string id)
+        {
+            throw new NotImplementedException();
+        }
 
+       
+            public override string ToString()
+        {
+            return $@"{this.GetType().Name};
+Matricule : {this.Matricule}
+Nom : {this.Nom}
+Annee : {this.anneeArrivee}";
+        }
     }
+    
 }
+
+
+
+
+
+
+
+//public void EnregistrerArrivee(String id)
+//{
+//  //  this.navireArrives.Add(id, );
+//}
+
+//public void EnregistrerDepart(string id)
+//{
+//    //this.navireArrives.Remove(navire.Imo);
+//}
+
+//private void AjoutNavireEnAttente(Navire navire)
+//{
+//    //this.navireEnAttente.Add(navire.Imo, navire);
+//}
+
+//public bool EstAttendu(String imo)
+//{
+//    //return (navireAttendus.ContainsKey(imo));
+//}
+
+//public bool EstPresent(String imo)
+//{
+//    //return (navireArrives.ContainsKey(imo));
+//}
+
+//public bool EstEnAttente(String imo)
+//{
+//    //return (navireEnAttente.ContainsKey(imo));
+//}
+
+//public void Chargement(Navire navire)
+//{
+
+//}

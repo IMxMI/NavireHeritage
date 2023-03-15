@@ -12,20 +12,20 @@ namespace Station.Interface
         /// Méthode qui met à jour la liste des objets qui sont
         /// susceptibles d'arriver dans la station (port, aéroport,…).
         /// </summary>
-        /// <param name="objects"></param>
-        void EnregistrerArriveePrevue(Object objects);
+        /// <param name="objet"></param>
+        void EnregistrerArriveePrevue(Object objet);
 
         /// <summary>
         /// Méthode qui enregistre l'arrivée réelle de l'objet. 
         /// </summary>
-        /// <param name="objects"></param>
-        void EnregistrerArrivee(String objects);
+        /// <param name="objet"></param>
+        void EnregistrerArrivee(String id);
 
         /// <summary>
         /// Méthode qui enregistre le départ d'un objet présent dans la station.
         /// </summary>
         /// <param name="objects"></param>
-        void EnregistrerDepart(String objects);
+        void EnregistrerDepart(String id);
 
         /// <summary>
         /// Retourne vrai si l'objet dont l'id est passé en paramètre fait partie des objets attendus dans la station.

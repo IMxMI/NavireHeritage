@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NavireHeritage.ClassesMetier
 {
-    abstract class Navire
+    public abstract class Navire
     {
         protected readonly string imo;
         protected readonly string nom;
