@@ -134,6 +134,11 @@ namespace NavireHeritage.ClassesMetier
             throw new NotImplementedException();
         }
 
+        public int NbCargoArrives(Object objet)
+        {
+            if this.navireArrives
+        }
+
         public override string ToString()
         {
             return $@"{this.GetType().Name};
