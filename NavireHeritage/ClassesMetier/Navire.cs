@@ -41,11 +41,11 @@ namespace NavireHeritage.ClassesMetier
             return $@"{this.GetType().Name};
 Coordonnées GPS : {this.}
 Nb portiques : {this.}
-Nb quais : {this.};
-Nb quais : {this.};
-Nb quais : { this.};
-Nb quais : { this.};
-Nb quais : { this.}";
+Nb quais croisières : {this.};
+Nb quais tankers : {this.};
+Nb quais super tankers : { this.};
+Nb Navires à quai: { this.};
+Nb Navires attendus : { this.}";
 
         }
     }
