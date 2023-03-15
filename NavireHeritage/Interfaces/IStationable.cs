@@ -8,9 +8,9 @@ namespace Station.Interface
 {
     interface IStationable
     {
-        void EnregistrerArriveePrevue(Object objects);
-        void EnregistrerArrivee(String objects);
-        void EnregistrerDepart(String objects);
+        void EnregistrerArriveePrevue(Object objet);
+        void EnregistrerArrivee(String objet);
+        void EnregistrerDepart(String objet);
         bool EstAttendu(String id);
         bool EstPresent(String id);
         bool EstParti(String id);

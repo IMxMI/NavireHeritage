@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace NavireHeritage.ClassesMetier
 {
-    class Croisiere : Navire
-    {
+    class Croisiere : Navire, Station.Interface.INavCroisierable
+	{
         private char typeNavireCroisiere;
         private int nbPassagersMaxi;
         private Dictionary<String, Passager> passagers;
@@ -26,7 +26,7 @@ namespace NavireHeritage.ClassesMetier
 		{
 			passagers = new List<Passager>();
 		}
-		public void Embarquer(List<Passager> passagers)
+		public void Embarquer(List<Object> passagers)
 		{
 			if (passagers.Count < nbPassagersMaxi)
 			{
@@ -40,7 +40,7 @@ namespace NavireHeritage.ClassesMetier
 				throw new Exception("Erreur le navire est déjà plein");
 			}
 		}
-		public List<Passager> Debarquer(List<Passager> passagers)
+		public List<Object> Debarquer(List<Object> passagers)
 		{
 			int count = 0;
 			if(passagers.Count > 0)
