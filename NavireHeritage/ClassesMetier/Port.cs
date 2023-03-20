@@ -72,37 +72,38 @@ namespace NavireHeritage.ClassesMetier
             }
         }           
 
-        public void EnregistrerArrivee(Object objet)
-        {
-            if (objet is Navire navire)
-            {
-                if (!navireArrives.ContainsKey(navire.Imo))
-                {
-                    this.navireAttendus.Remove(navire.Imo);
-                    this.navireArrives.Add(navire.Imo, navire);
-                }
-                else
-                {
-                    throw new Exception("Le navire" + navire.Imo + "est déja enregistré dans le port.");
-                }
-            }
-            else
-            {
-                throw new Exception("L'objet n'est pas un navire.");
-            }
-        }
+       public void EnregistrerDepart(Object objet)
+		{
+			if (objet is Navire navire)
+			{
+				if (navireArrives.ContainsKey(navire.Imo))
+				{
+					navirePartis.Add(navire.Imo, navire);
+					navireArrives.Remove(navire.Imo);
+				}
+				else
+				{
+					throw new Exception($"Le navire {navire.Imo} n'est pas dans le port");
+				}
+			}
+			
+		}
 
-        public void EnregistrerDepart(Object objet)
-        {
-            if (objet is Navire navire)
-            {
-                this.navireArrives.Add(navire.Imo, navire);
-            }
-            else
-            {
-                throw new Exception("L'objet n'est pas un navire.");
-            }
-        }
+		public void EnregistrerDepart(string imo)
+		{
+			if (navireArrives.ContainsKey(imo))
+			{
+				foreach(Navire navire in navireArrives.Values)
+				{
+					navirePartis.Add(navire.Imo, navire);
+					navireArrives.Remove(imo);
+				}
+			}
+			else
+			{
+				throw new Exception($"Le navire {imo} n'est pas présent dans le port");
+			}
+		}
 
         public bool EstAttendu(string id)
         {
@@ -136,7 +137,7 @@ namespace NavireHeritage.ClassesMetier
 
         public int NbCargoArrives(Object objet)
         {
-            if this.navireArrives
+            if thi
         }
 
         public override string ToString()
