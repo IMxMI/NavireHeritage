@@ -17,10 +17,10 @@ namespace NavireHeritage.ClassesMetier
         private int nbQuaisPassager;
         private int nbQuaisTanker;
         private int nbQuaisSuperTanker;
-        private readonly Dictionary<String, Navire> navireAttendus;
-        private readonly Dictionary<String, Navire> navireArrives;
-        private readonly Dictionary<String, Navire> navirePartis;
-        private readonly Dictionary<String, Navire> navireEnAttente;
+        private readonly Dictionary<String, Navire> navireAttendus = new Dictionary<string, Navire>();
+		private readonly Dictionary<String, Navire> navireArrives = new Dictionary<string, Navire>();
+		private readonly Dictionary<String, Navire> navirePartis = new Dictionary<string, Navire>();
+		private readonly Dictionary<String, Navire> navireEnAttente = new Dictionary<string, Navire>();
 
         public Port(string nom, string latitude, string longitude, int nbPortique, int nbQuaisPassager, int nbQuaisTanker, int nbQuaisSuperTanker)
         {
@@ -250,7 +250,12 @@ namespace NavireHeritage.ClassesMetier
 
 		public override string ToString()
 		{
-			return $"Port de {nom}\n\tCoordonnées GPS : {latitude} / {longitude}\n\tNb portiques : {nbPortique}\n\tNb quas croisière : {nbQuaisPassager}\n\tNb quais tanker : {nbQuaisTanker}\t\nNb quais super tankers : {nbQuaisSuperTanker}\n\tNb Navires à quai : {navireArrives.Count}\n\tNb navires attendus : {navireAttendus.Count}\n\tNb navires partis : {navirePartis.Count}\n\tNb navires en attente : {navireEnAttente.Count}\n\nNombre de cargos dans le port : {GetNbCargoArrives()}\nNombre de tankers dans le port : {GetNbTankerArrives()}\tNombre de super tankers dans le port : {GetNbSuperTankerArrives()}";
+			return $"Port de {nom}\n\tCoordonnées GPS : {latitude} / {longitude}\n\tNb portiques : {nbPortique}\n\tNb quas croisière : {nbQuaisPassager}\n\tNb quais tanker : {nbQuaisTanker}\n\tNb quais super tankers : {nbQuaisSuperTanker}\n\tNb Navires à quai : {navireArrives.Count}\n\tNb navires attendus : {navireAttendus.Count}\n\tNb navires partis : {navirePartis.Count}\n\tNb navires en attente : {navireEnAttente.Count}\n\nNombre de cargos dans le port : {GetNbCargoArrives()}\nNombre de tankers dans le port : {GetNbTankerArrives()}\nNombre de super tankers dans le port : {GetNbSuperTankerArrives()}";
 		}
-	}
+
+        public void EnregistrerArrivee(object objet)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
