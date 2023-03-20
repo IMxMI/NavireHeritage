@@ -105,98 +105,152 @@ namespace NavireHeritage.ClassesMetier
 			}
 		}
 
-        public bool EstAttendu(string id)
-        {
-            throw new NotImplementedException();
-        }
+ /// <summary>
+		/// Ajout du navire passé en paramètre dans le
+		/// dictionnaire des navires en attente d'un quai dans le port
+		/// </summary>
+		/// <param name="navire"></param>
 
-        public bool EstPresent(string id)
-        {
-            throw new NotImplementedException();
-        }
+		public void AjouterNavireEnAttente(Navire navire)
+		{
+			navireEnAttente.Add(navire.Imo, navire);
+		}
 
-        public bool EstParti(string id)
-        {
-            throw new NotImplementedException();
-        }
+		/// <summary>
+		/// Retourne vrai si le navire est attendu
+		/// </summary>
+		/// <param name="imo"></param>
+		/// <returns></returns>
 
-        public object GetUnAttendu(string id)
-        {
-            throw new NotImplementedException();
-        }
+		public bool EstAttendu(string imo)
+		{
+			return navireAttendus.ContainsKey(imo);
+		}
 
-        public object GetUnArrive(string id)
-        {
-            throw new NotImplementedException();
-        }
+		/// <summary>
+		/// Retourne vrai si le navire est dans le port
+		/// </summary>
+		/// <param name="imo"></param>
+		/// <returns></returns>
 
-        public object GetUnParti(string id)
-        {
-            throw new NotImplementedException();
-        }
+		public bool EstPresent(string imo)
+		{
+			return navireArrives.ContainsKey(imo);
+		}
 
-        public int NbCargoArrives(Object objet)
-        {
-            if thi
-        }
+		public bool EstParti(string imo)
+		{
+			return navirePartis.ContainsKey(imo);
+		}
 
-        public override string ToString()
-        {
-            return $@"{this.GetType().Name};
-Port de : {this.Nom};
-Coordonnées GPS : {this.latitude + this.longitude};
-Nb portiques : {this.nbPortique};
-Nb quais croisières : {this.nbQuaisPassager};
-Nb quais tankers : {this.nbQuaisTanker};
-Nb quais super tankers : { this.nbQuaisSuperTanker};
-Nb Navires à quai: { this.navireArrives};
-Nb Navires attendus : { this.navireAttendus};
-Nb Navires à partis: { this.navirePartis};
-Nb Navires en attente: { this.navireEnAttente}";
+		/// <summary>
+		/// Chargement du navire dont l'id est passé en
+		/// paramètre de la quantité passée en paramètre
+		/// </summary>
+		/// <param name="imo"></param>
+		/// <param name="qte"></param>
+		public void Chargement(string imo, int qte)
+		{
+			if (navireArrives.ContainsKey(imo))
+			{
+				foreach (Navire navire in navireArrives.Values)
+				{
+					if (navire.Imo == imo)
+					{
+						if (navire.TonnageActuel != navire.TonnageDWT)
+						{
+							navire.TonnageActuel += qte;
+						}
+						else
+						{
+							throw new Exception($"Le navire {imo} est plein");
+						}
 
-        }
-    }
+					}
+				}
+			}
+			else
+			{
+				throw new Exception($"Le navire {imo} n'est pas dans le port");
+			}
+		}
 
-    
+		public Object GetUnParti(string id)
+		{
+			if (navirePartis.ContainsKey(id))
+			{
+				return navirePartis[id];
+			}
+			else
+			{
+				throw new Exception($"Le navire {id} n'est pas parti");
+			}
+		}
+
+		public Object GetUnAttendu(string id)
+		{
+			if (navireAttendus.ContainsKey(id))
+			{
+				return navireAttendus[id];
+			}
+			else
+			{
+				throw new Exception($"Le navire {id} n'est pas attendu dans le port");
+			}
+		}
+
+		public Object GetUnArrive(string id)
+		{
+			if (navireArrives.ContainsKey(id))
+			{
+				return navireArrives[id];
+			}
+			else
+			{
+				throw new Exception($"Le navire {id} n'est pas arrivé dans le port");
+			}
+		}
+
+		public int GetNbTankerArrives()
+		{
+			int count = 0;
+			foreach(Tanker navire in navireArrives.Values)
+			{
+					if (navire.TonnageGT <= 130000)
+					{
+						count++;
+					}
+			}
+			return count;
+		}
+
+		public int GetNbSuperTankerArrives()
+		{
+			int count = 0;
+			foreach(Tanker navire in navireArrives.Values)
+			{
+				if (navire.TonnageGT > 130000)
+				{
+					count++;
+				}
+			}
+			return count;
+		}
+
+		public int GetNbCargoArrives()
+		{
+			int count = 0;
+			foreach (Cargo navire in navireArrives.Values)
+			{
+				count++;
+			}
+			return count;
+		}
+
+
+		public override string ToString()
+		{
+			return $"Port de {nom}\n\tCoordonnées GPS : {latitude} / {longitude}\n\tNb portiques : {nbPortique}\n\tNb quas croisière : {nbQuaisPassager}\n\tNb quais tanker : {nbQuaisTanker}\t\nNb quais super tankers : {nbQuaisSuperTanker}\n\tNb Navires à quai : {navireArrives.Count}\n\tNb navires attendus : {navireAttendus.Count}\n\tNb navires partis : {navirePartis.Count}\n\tNb navires en attente : {navireEnAttente.Count}\n\nNombre de cargos dans le port : {GetNbCargoArrives()}\nNombre de tankers dans le port : {GetNbTankerArrives()}\tNombre de super tankers dans le port : {GetNbSuperTankerArrives()}";
+		}
+	}
 }
-
-
-
-
-
-
-
-//public void EnregistrerArrivee(String id)
-//{
-//  //  this.navireArrives.Add(id, );
-//}
-
-//public void EnregistrerDepart(string id)
-//{
-//    //this.navireArrives.Remove(navire.Imo);
-//}
-
-//private void AjoutNavireEnAttente(Navire navire)
-//{
-//    //this.navireEnAttente.Add(navire.Imo, navire);
-//}
-
-//public bool EstAttendu(String imo)
-//{
-//    //return (navireAttendus.ContainsKey(imo));
-//}
-
-//public bool EstPresent(String imo)
-//{
-//    //return (navireArrives.ContainsKey(imo));
-//}
-
-//public bool EstEnAttente(String imo)
-//{
-//    //return (navireEnAttente.ContainsKey(imo));
-//}
-
-//public void Chargement(Navire navire)
-//{
-
-//}
