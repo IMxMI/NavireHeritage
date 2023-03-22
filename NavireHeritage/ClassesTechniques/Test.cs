@@ -18,13 +18,31 @@ namespace NavireHeritage.ClassesTechniques
                     140872, 148992, 123000, "marchandises diverses"));
                 port.EnregistrerArriveePrevue(new Cargo("IMO9250098", "CONTAINERSHIPS VII", 54.35412, 5.3644,
                     10499, 13965, 11000, "Matériel de loisirs"));
+                port.EnregistrerArriveePrevue(new Cargo("IMO9502910", "MAERSK EMERALD", 54.72202, 170.54304,
+                    141754, 141189, 137000, "marchandises diverses"));
+                port.EnregistrerArriveePrevue(new Cargo("IMO9755933", "MSC DIANA", 39.74224, 5.99304,
+                    193489, 202036, 176000, "Matériel industriel"));
+                port.EnregistrerArriveePrevue(new Cargo("IMO9204506", "HOLANDIA", 41.74844, 6.87008,
+                    8737, 9113, 7500, "marchandises diverses"));
+                port.EnregistrerArriveePrevue(new Cargo("IMO9305893", "VENTO DI ZEFIRO", 41.5070, 11.41972, 
+                    17665, 22033, 0, "Matériel industriel"));
             }
-            catch
+            catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
 
 
+        }
+
+        public static void AfficheAttendus(Port port)
+        {
+            Console.WriteLine("-------------------------------------------------------------------\n" +
+                "Liste des bateaux en attente de leur arrivée :");
+            foreach (var navire in port.NavireAttendus)
+            {
+                Console.WriteLine($"{navire.Key}\t{navire.Value.Nom} : {navire.Value.GetType().Name}");
+            }
         }
     }
 }
