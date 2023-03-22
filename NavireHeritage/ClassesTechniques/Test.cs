@@ -30,6 +30,10 @@ namespace NavireHeritage.ClassesTechniques
                     17665, 22033, 7500, "Huile"));
                 port.EnregistrerArriveePrevue(new Croisiere("IM95885543", "CROIS IERE", 43.3245, 6.87008,
                     17665, 22033, 'C', 'C',4));
+                port.EnregistrerArrivee(new Cargo("IMO9780859", "CMA CGM A. LINCOLN", 43.43279, 134.76258,
+                    140872, 148992, 123000, "marchandises diverses"));
+                port.EnregistrerArrivee(new Cargo("IMO3240859", "CMA CGM", 43.43279, 134.76258,
+                   140872, 148992, 123000, "marchandises diverses"));
             }
             catch(Exception ex)
             {
