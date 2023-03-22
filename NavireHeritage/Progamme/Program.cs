@@ -30,6 +30,18 @@ namespace NavireHeritage
 				Test.TestEnregistrerArrivee(port, "IMO9197832");
 				Test.TestEnregistrerArrivee(port, "IMO9220952");
 				Test.TestEnregistrerArrivee(port, "IMO9379715");
+				/**
+				 * On essaie de faire partir un navire qui n'est pas arrivé
+				 */
+
+
+				Test.TestEnregistrerDepart(port, "IMO933333");
+
+				/*
+				 * On fait partir le navire de croisière, 
+				 * il y a touours le super tanker en attente
+				 */
+				Test.TestEnregistrerDepart(port, "IMO9241061");
 				Console.ReadKey();
 				
 			}
