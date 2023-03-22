@@ -48,5 +48,17 @@ namespace NavireHeritage.ClassesTechniques
                 Console.WriteLine($"{navire.Key}\t{navire.Value.Nom} : {navire.Value.GetType().Name}");
             }
         }
+
+        public static void TestEnregistrerArriveePrevue(Port port, Navire navire)
+        {
+            try
+            {
+                port.EnregistrerArriveePrevue(navire);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
