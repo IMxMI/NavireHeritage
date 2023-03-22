@@ -28,7 +28,8 @@ namespace NavireHeritage.ClassesTechniques
                     17665, 22033, 0, "Matériel industriel"));
                 port.EnregistrerArriveePrevue(new Tanker("IMO9305543", "O DI ZEFI", 43.3245, 6.87008,
                     17665, 22033, 7500, "Huile"));
-                //port.EnregistrerArriveePrevue(new Cr)
+                port.EnregistrerArriveePrevue(new Croisiere("IM95885543", "CROIS IERE", 43.3245, 6.87008,
+                    17665, 22033, 'C', 'C',4));
             }
             catch(Exception ex)
             {

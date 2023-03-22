@@ -37,17 +37,17 @@ namespace NavireHeritage.ClassesMetier
         public void Embarquer(List<Object> passagers)
         {
             int count = 0;
-            if (passagers.Count  0)
+            if (passagers.Count < this.nbPassagersMaxi)
             {
                 foreach (Passager passager1 in this.passagers.Values)
                 {
-                    passagers.RemoveAt(count);
+                    passagers.Add(count);
                     count++;
                 }
             }
             else
             {
-                throw new Exception("Erreur le bateau est déjà vide");
+                throw new Exception("Erreur le bateau est plein");
             }
         }
         public List<Object> Debarquer(List<Object> passagers)
