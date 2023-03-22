@@ -15,9 +15,12 @@ namespace NavireHeritage
         {
             try
             {
-                //Port port = new Port("Marseille", "43.2976N", "5.3471E", 4, 3, 2, 4);
-                //Console.WriteLine(port);
-                throw new GestionPortException("Test création d'erreur");
+                Port port = new Port("Marseille", "43.2976N", "5.3471E", 4, 3, 2, 4);
+                Test.ChargementInitial(port);
+                Console.WriteLine(port);
+                Test.AfficheAttendus(port);
+
+                // throw new GestionPortException("Test création d'erreur");
 
             }
             catch (Exception ex)

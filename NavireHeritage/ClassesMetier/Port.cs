@@ -8,7 +8,7 @@ using Station.Interface;
 
 namespace NavireHeritage.ClassesMetier
 {
-     class Port : IStationable
+     public class Port : IStationable
     {
         private readonly string nom;
         private readonly string latitude;
