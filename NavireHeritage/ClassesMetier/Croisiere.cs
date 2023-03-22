@@ -34,15 +34,20 @@ namespace NavireHeritage.ClassesMetier
 
         internal Dictionary<string, Passager> Passagers => passagers;
 
-        public void Embarquer(List<object> objects)
+        public void Embarquer(List<Object> passagers)
         {
-            try
+            int count = 0;
+            if (passagers.Count  0)
             {
-
+                foreach (Passager passager1 in this.passagers.Values)
+                {
+                    passagers.RemoveAt(count);
+                    count++;
+                }
             }
-            catch
+            else
             {
-
+                throw new Exception("Erreur le bateau est déjà vide");
             }
         }
         public List<Object> Debarquer(List<Object> passagers)
