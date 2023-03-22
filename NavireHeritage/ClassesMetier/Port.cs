@@ -63,7 +63,7 @@ namespace NavireHeritage.ClassesMetier
                 }
                 else
                 {
-                    throw new Exception("Le navire" + navire.Imo + "est déja enregistré dans le port.");
+                    throw new Exception("Le navire " + navire.Imo + " est déja enregistré dans le port.");
                 }
             }
             else
