@@ -24,6 +24,6 @@ namespace Station.Interface
         /// Cette méthode retourne la liste des objets passés en paramètre et qui n'ont pas été trouvés dans la liste des objets présents dans le navire.
         /// </summary>
         /// <param name="objects">Objs.</param>
-        void Debarquer(List<Object> objects);
+        List<Object> Debarquer(List<Object> passagers);
     }
 }

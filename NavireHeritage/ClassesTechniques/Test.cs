@@ -26,6 +26,9 @@ namespace NavireHeritage.ClassesTechniques
                     8737, 9113, 7500, "marchandises diverses"));
                 port.EnregistrerArriveePrevue(new Cargo("IMO9305893", "VENTO DI ZEFIRO", 41.5070, 11.41972, 
                     17665, 22033, 0, "Matériel industriel"));
+                port.EnregistrerArriveePrevue(new Tanker("IMO9305543", "O DI ZEFI", 43.3245, 6.87008,
+                    17665, 22033, 7500, "Huile"));
+                //port.EnregistrerArriveePrevue(new Cr)
             }
             catch(Exception ex)
             {
