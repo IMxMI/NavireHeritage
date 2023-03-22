@@ -62,39 +62,167 @@ namespace NavireHeritage.ClassesMetier
 			{
 				if(navire is Croisiere croisiere)
 				{
-					navireArrives.Add(croisiere.Imo, croisiere);
-					navireAttendus.Remove(croisiere.Imo);
+					NavireCroisiereArrive(croisiere);
 				}
 				else if(navire is Cargo cargo)
 				{
-					int i = 0;
-					foreach(Cargo cargo1 in navireArrives)
+					if (navireAttendus.ContainsKey(navire.Imo))
 					{
-						i++;
+						NavireCargoAttenduArrive(cargo);
+					}
+					else
+					{
+						CargoInnattendu(cargo.Imo, cargo.Nom, cargo.Latitude, cargo.Longitude, cargo.TonnageGT, cargo.TonnageDWT, cargo.TonnageActuel, cargo.TypeFret);
 					}
 				}
-				navireArrives.Add(navire.Imo, navire);
-				navireAttendus.Remove(navire.Imo);
-			}
-            
-		}
-
-
-        public void EnregistrerArrivee(string imo)
-		{
-			if (navireAttendus.ContainsKey(imo) || navireArrives.ContainsKey(imo))
-			{
-				foreach (Navire navire in navireAttendus.Values)
+				else if(navire is Tanker tanker)
 				{
-					navireArrives.Add(imo, navire);
-					navireAttendus.Remove(imo);
+					if (navireAttendus.ContainsKey(navire.Imo))
+					{
+						NavireTankerAttenduArrive(tanker);
+					}
+					else
+					{
+						TankerInnattendu(tanker.Imo, tanker.Nom, tanker.Latitude, tanker.Longitude, tanker.TonnageGT, tanker.TonnageDWT, tanker.TonnageActuel, tanker.TypeFluide);
+					}
 				}
 			}
 			else
 			{
-				throw new Exception($"Le navire {imo} n'est pas attendu ou est déjà dans le port");
+				throw new Exception("Ce n'est pas un navire");
 			}
+		}
 
+		
+		private void NavireCroisiereArrive(Croisiere croisiere)
+		{
+			navireArrives.Add(croisiere.Imo, croisiere);
+			navireAttendus.Remove(croisiere.Imo);
+		}
+
+		private void NavireCargoAttenduArrive(Cargo cargo)
+		{
+			if (GetNbCargoArrives() < nbPortique)
+			{
+				navireArrives.Add(cargo.Imo, cargo);
+				navireAttendus.Remove(cargo.Imo);
+			}
+			else
+			{
+				navireEnAttente.Add(cargo.Imo, cargo);
+				navireAttendus.Remove(cargo.Imo);
+			}
+		}
+
+		private void CargoInnattendu(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFret)
+		{
+			Cargo cargo = new Cargo(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel, typeFret);
+			if (GetNbCargoArrives() < nbPortique)
+			{
+				navireArrives.Add(cargo.Imo, cargo);
+				navireAttendus.Remove(cargo.Imo);
+			}
+			else
+			{
+				navireEnAttente.Add(cargo.Imo, cargo);
+				navireAttendus.Remove(cargo.Imo);
+			}
+		}
+
+		private void TankerInnattendu(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFluide)
+		{
+			Tanker tanker = new Tanker(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel, typeFluide);
+			if(tanker.TonnageGT <= 130000)
+			{
+				if (GetNbTankerArrives() < nbQuaisTanker)
+				{
+					navireArrives.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+				else
+				{
+					navireEnAttente.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+			}
+			else
+			{
+				if (GetNbSuperTankerArrives() < nbQuaisSuperTanker)
+				{
+					navireArrives.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+				else
+				{
+					navireEnAttente.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+			}
+		}
+
+		private void NavireTankerAttenduArrive(Tanker tanker)
+		{
+			if (tanker.TonnageGT <= 130000)
+			{
+				if (GetNbTankerArrives() < nbQuaisTanker)
+				{
+					navireArrives.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+				else
+				{
+					navireEnAttente.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+			}
+			else
+			{
+				if (GetNbSuperTankerArrives() < nbQuaisSuperTanker)
+				{
+					navireArrives.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+				else
+				{
+					navireEnAttente.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+			}
+		}
+
+		public void EnregistrerArrivee(string imo)
+		{
+			foreach(Navire navire in navireArrives.Values)
+			{
+				if (navire is Croisiere croisiere)
+				{
+					NavireCroisiereArrive(croisiere);
+				}
+				else if (navire is Cargo cargo)
+				{
+					if (navireAttendus.ContainsKey(navire.Imo))
+					{
+						NavireCargoAttenduArrive(cargo);
+					}
+					else
+					{
+						CargoInnattendu(cargo.Imo, cargo.Nom, cargo.Latitude, cargo.Longitude, cargo.TonnageGT, cargo.TonnageDWT, cargo.TonnageActuel, cargo.TypeFret);
+					}
+				}
+				else if (navire is Tanker tanker)
+				{
+					if (navireAttendus.ContainsKey(navire.Imo))
+					{
+						NavireTankerAttenduArrive(tanker);
+					}
+					else
+					{
+						TankerInnattendu(tanker.Imo, tanker.Nom, tanker.Latitude, tanker.Longitude, tanker.TonnageGT, tanker.TonnageDWT, tanker.TonnageActuel, tanker.TypeFluide);
+					}
+				}
+
+				throw new Exception($"{imo} n'est pas un navire");
+			}
 		}
 
 		public void EnregistrerDepart(Object objet)

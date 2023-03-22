@@ -8,5 +8,6 @@ namespace GestionNavire.Exceptions
 {
     class GestionPortException
     {
+
     }
 }

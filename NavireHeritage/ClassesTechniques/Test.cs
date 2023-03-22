@@ -27,6 +27,14 @@ namespace NavireHeritage.ClassesTechniques
 			{
 				// cargo
 				port.EnregistrerArriveePrevue(new Cargo("IMO9780859", "CMA CGM A. LINCOLN", 43.43279, 134.76258, 140872, 148992, 123000, "marchandises diverses"));
+				port.EnregistrerArriveePrevue(new Cargo("IMO9250098", "CONTAINERSHIPS VII", 54.35412, 5.3644, 10499, 13965, 11000, "Matériel de loisirs"));
+				port.EnregistrerArriveePrevue(new Cargo("IMO9502910", "MAERSK EMERALD", 54.72202, 170.54304, 141754, 141189, 137000, "marchandises diverses"));
+				port.EnregistrerArriveePrevue(new Cargo("IMO9755933", "MSC DIANA", 39.74224, 5.99304, 193489, 202036, 176000, "Matériel industriel"));
+				port.EnregistrerArriveePrevue(new Cargo("IMO9204506", "HOLANDIA", 41.74844, 6.87008, 8737, 9113, 7500, "marchandises diverses"));
+				port.EnregistrerArriveePrevue(new Cargo("IMO9305893", "VENTO DI ZEFIRO", 41.50706, 11.41972, 17665, 22033, 16784, "Matériel industriel"));
+				port.EnregistrerArriveePrevue(new Tanker("IMO9334076", "EJNAN", 52.84632, 42.14151, 140872, 148992, 123000, "Pétrole"));
+				
+
 			}
 			catch (Exception ex)
 			{
