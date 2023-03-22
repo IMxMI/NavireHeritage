@@ -247,15 +247,220 @@ namespace NavireHeritage.ClassesMetier
 			return count;
 		}
 
+		/// <summary>
+		/// Enregistre les navires arrivee dans le port.
+		/// </summary>
+		/// <param name="objet">Navire.</param>
+		public void EnregistrerArrivee(Object objet)
+		{
+			if (objet is Navire navire)
+			{
+				if (navire is Croisiere croisiere)
+				{
+					NavireCroisiereArrive(croisiere);
+				}
+				else if (navire is Cargo cargo)
+				{
+					if (navireAttendus.ContainsKey(navire.Imo))
+					{
+						NavireCargoAttenduArrive(cargo);
+					}
+					else
+					{
+						CargoInnattendu(cargo.Imo, cargo.Nom, cargo.Latitude, cargo.Longitude, cargo.TonnageGT, cargo.TonnageDWT, cargo.TonnageActuel, cargo.TypeFret);
+					}
+				}
+				else if (navire is Tanker tanker)
+				{
+					if (navireAttendus.ContainsKey(navire.Imo))
+					{
+						NavireTankerAttenduArrive(tanker);
+					}
+					else
+					{
+						TankerInnattendu(tanker.Imo, tanker.Nom, tanker.Latitude, tanker.Longitude, tanker.TonnageGT, tanker.TonnageDWT, tanker.TonnageActuel, tanker.TypeFluide);
+					}
+				}
+			}
+			else
+			{
+				throw new Exception("Ce n'est pas un navire");
+			}
+		}
+
+		/// <summary>
+		/// Un navire de type croisiere est arriver.
+		/// </summary>
+		/// <param name="croisiere"></param>
+		private void NavireCroisiereArrive(Croisiere croisiere)
+		{
+			navireArrives.Add(croisiere.Imo, croisiere);
+			navireAttendus.Remove(croisiere.Imo);
+		}
+
+		/// <summary>
+		/// Un navire de type cargo, attendu est arrive.
+		/// </summary>
+		/// <param name="cargo">Navire Cargo.</param>
+		private void NavireCargoAttenduArrive(Cargo cargo)
+		{
+			if (GetNbCargoArrives() < nbPortique)
+			{
+				navireArrives.Add(cargo.Imo, cargo);
+				navireAttendus.Remove(cargo.Imo);
+			}
+			else
+			{
+				navireEnAttente.Add(cargo.Imo, cargo);
+				navireAttendus.Remove(cargo.Imo);
+			}
+		}
+
+		/// <summary>
+		/// Le navirede type Cargo est innatendu.
+		/// </summary>
+		/// <param name="imo">Imo.</param>
+		/// <param name="nom">Nom.</param>
+		/// <param name="latitude">Latitude.</param>
+		/// <param name="longitude">Longitude.</param>
+		/// <param name="tonnageGT">TonnageGT.</param>
+		/// <param name="tonnageDWT">TonnageDWT.</param>
+		/// <param name="tonnageActuel">TonnageActuel.</param>
+		/// <param name="typeFret">TypeFret.</param>
+		private void CargoInnattendu(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFret)
+		{
+			Cargo cargo = new Cargo(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel, typeFret);
+			if (GetNbCargoArrives() < nbPortique)
+			{
+				navireArrives.Add(cargo.Imo, cargo);
+				navireAttendus.Remove(cargo.Imo);
+			}
+			else
+			{
+				navireEnAttente.Add(cargo.Imo, cargo);
+				navireAttendus.Remove(cargo.Imo);
+			}
+		}
+
+		/// <summary>
+		/// Le navire de type Tanker n'est pas attendu.
+		/// </summary>
+		/// <param name="imo"></param>
+		/// <param name="nom"></param>
+		/// <param name="latitude"></param>
+		/// <param name="longitude"></param>
+		/// <param name="tonnageGT"></param>
+		/// <param name="tonnageDWT"></param>
+		/// <param name="tonnageActuel"></param>
+		/// <param name="typeFluide"></param>
+		private void TankerInnattendu(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFluide)
+		{
+			Tanker tanker = new Tanker(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel, typeFluide);
+			if (tanker.TonnageGT <= 130000)
+			{
+				if (GetNbTankerArrives() < nbQuaisTanker)
+				{
+					navireArrives.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+				else
+				{
+					navireEnAttente.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+			}
+			else
+			{
+				if (GetNbSuperTankerArrives() < nbQuaisSuperTanker)
+				{
+					navireArrives.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+				else
+				{
+					navireEnAttente.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Un navire de type Tanker attendu, est arrivé.
+		/// </summary>
+		/// <param name="tanker"></param>
+		private void NavireTankerAttenduArrive(Tanker tanker)
+		{
+			if (tanker.TonnageGT <= 130000)
+			{
+				if (GetNbTankerArrives() < nbQuaisTanker)
+				{
+					navireArrives.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+				else
+				{
+					navireEnAttente.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+			}
+			else
+			{
+				if (GetNbSuperTankerArrives() < nbQuaisSuperTanker)
+				{
+					navireArrives.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+				else
+				{
+					navireEnAttente.Add(tanker.Imo, tanker);
+					navireAttendus.Remove(tanker.Imo);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Enregistre l'arrivé des Navires dans navireArrives.
+		/// </summary>
+		/// <param name="imo"></param>
+		public void EnregistrerArrivee(string imo)
+		{
+			foreach (Navire navire in navireArrives.Values)
+			{
+				if (navire is Croisiere croisiere)
+				{
+					NavireCroisiereArrive(croisiere);
+				}
+				else if (navire is Cargo cargo)
+				{
+					if (navireAttendus.ContainsKey(navire.Imo))
+					{
+						NavireCargoAttenduArrive(cargo);
+					}
+					else
+					{
+						CargoInnattendu(cargo.Imo, cargo.Nom, cargo.Latitude, cargo.Longitude, cargo.TonnageGT, cargo.TonnageDWT, cargo.TonnageActuel, cargo.TypeFret);
+					}
+				}
+				else if (navire is Tanker tanker)
+				{
+					if (navireAttendus.ContainsKey(navire.Imo))
+					{
+						NavireTankerAttenduArrive(tanker);
+					}
+					else
+					{
+						TankerInnattendu(tanker.Imo, tanker.Nom, tanker.Latitude, tanker.Longitude, tanker.TonnageGT, tanker.TonnageDWT, tanker.TonnageActuel, tanker.TypeFluide);
+					}
+				}
+
+				throw new Exception($"{imo} n'est pas un navire");
+			}
+		}
+
 
 		public override string ToString()
 		{
 			return $"Port de {nom}\n\tCoordonnées GPS : {latitude} / {longitude}\n\tNb portiques : {nbPortique}\n\tNb quas croisière : {nbQuaisPassager}\n\tNb quais tanker : {nbQuaisTanker}\n\tNb quais super tankers : {nbQuaisSuperTanker}\n\tNb Navires à quai : {navireArrives.Count}\n\tNb navires attendus : {navireAttendus.Count}\n\tNb navires partis : {navirePartis.Count}\n\tNb navires en attente : {navireEnAttente.Count}\n\nNombre de cargos dans le port : {GetNbCargoArrives()}\nNombre de tankers dans le port : {GetNbTankerArrives()}\nNombre de super tankers dans le port : {GetNbSuperTankerArrives()}";
 		}
-
-        public void EnregistrerArrivee(object objet)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -60,5 +60,17 @@ namespace NavireHeritage.ClassesTechniques
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public static void TestEnregistrerDepart(Port port, Navire navire)
+        {
+            try
+            {
+                port.EnregistrerDepart(navire);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
