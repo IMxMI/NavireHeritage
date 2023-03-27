@@ -14,25 +14,25 @@ namespace NavireHeritage.ClassesTechniques
             try
             {
                 // cargos
-                port.EnregistrerArriveePrevue(new Cargo("IMO9780859", "CMA CGM A. LINCOLN", 43.43279, 134.76258,
+                port.EnregistrerArriveePrevue(new Cargo("IMO9780859", "CMA CGM A. LINCOLN", "43.43279 N", "134.76258 W",
                     140872, 148992, 123000, "marchandises diverses"));
-                port.EnregistrerArriveePrevue(new Cargo("IMO9250098", "CONTAINERSHIPS VII", 54.35412, 5.3644,
+                port.EnregistrerArriveePrevue(new Cargo("IMO9250098", "CONTAINERSHIPS VII", "54.35412 N", "5.3644 W",
                     10499, 13965, 11000, "Matériel de loisirs"));
-                port.EnregistrerArriveePrevue(new Cargo("IMO9502910", "MAERSK EMERALD", 54.72202, 170.54304,
+                port.EnregistrerArriveePrevue(new Cargo("IMO9502910", "MAERSK EMERALD", "54.72202 N", "170.54304 W",
                     141754, 141189, 137000, "marchandises diverses"));
-                port.EnregistrerArriveePrevue(new Cargo("IMO9755933", "MSC DIANA", 39.74224, 5.99304,
+                port.EnregistrerArriveePrevue(new Cargo("IMO9755933", "MSC DIANA", "39.74224 N", "5.99304 W",
                     193489, 202036, 176000, "Matériel industriel"));
-                port.EnregistrerArriveePrevue(new Cargo("IMO9204506", "HOLANDIA", 41.74844, 6.87008,
+                port.EnregistrerArriveePrevue(new Cargo("IMO9204506", "HOLANDIA", "41.74844 N", "6.87008 W",
                     8737, 9113, 7500, "marchandises diverses"));
-                port.EnregistrerArriveePrevue(new Cargo("IMO9305893", "VENTO DI ZEFIRO", 41.5070, 11.41972, 
+                port.EnregistrerArriveePrevue(new Cargo("IMO9305893", "VENTO DI ZEFIRO", "41.5070 N", "11.41972 W", 
                     17665, 22033, 0, "Matériel industriel"));
-                port.EnregistrerArriveePrevue(new Tanker("IMO9305543", "O DI ZEFI", 43.3245, 6.87008,
+                port.EnregistrerArriveePrevue(new Tanker("IMO9305543", "O DI ZEFI", "43.3245 N", "6.87008 W",
                     17665, 22033, 7500, "Huile"));
-                port.EnregistrerArriveePrevue(new Croisiere("IM95885543", "CROIS IERE", 43.3245, 6.87008,
+                port.EnregistrerArriveePrevue(new Croisiere("IM95885543", "CROIS IERE", "43.3245 N", "6.87008 W",
                     17665, 22033, 'C', 'C',4));
-                port.EnregistrerArrivee(new Cargo("IMO9780859", "CMA CGM A. LINCOLN", 43.43279, 134.76258,
+                port.EnregistrerArrivee(new Cargo("IMO9780859", "CMA CGM A. LINCOLN", "43.43279 N", "134.76258 W",
                     140872, 148992, 123000, "marchandises diverses"));
-                port.EnregistrerArrivee(new Cargo("IMO3240859", "CMA CGM", 43.43279, 134.76258,
+                port.EnregistrerArrivee(new Cargo("IMO3240859", "CMA CGM", "43.43279 N", "134.76258 W",
                    140872, 148992, 123000, "marchandises diverses"));
             }
             catch(Exception ex)

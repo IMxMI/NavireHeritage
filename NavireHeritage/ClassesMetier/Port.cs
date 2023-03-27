@@ -255,11 +255,13 @@ namespace NavireHeritage.ClassesMetier
 
         public void EnregistrerArrivee(object objet)
         {
-            if(objet is Navire navire)
+			Navire navire = (Navire)objet;
+
+			if (EstAttendu(navire.Imo))
             {
 				if(navire is Croisiere croisiere)
                 {
-
+					this.NavireArrives.Add(croisiere.Imo, croisiere);
                 }
 				else if(navire is Tanker tanker)
                 {
@@ -269,6 +271,7 @@ namespace NavireHeritage.ClassesMetier
                 {
 
                 }
+				this.navireAttendus.Remove(navire.Imo);
             }
         }
     }

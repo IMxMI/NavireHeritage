@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Station.Interface;
 
 namespace NavireHeritage.ClassesMetier
 {
-    class Cargo : Navire, Station.Interface.INavCommercable
+    class Cargo : Navire, INavCommercable
     {
         private string typeFret;
 
@@ -21,7 +22,7 @@ namespace NavireHeritage.ClassesMetier
         /// <param name="tonnageDWT">TonnageDWT.</param>
         /// <param name="tonnageActuel">TonnageActuel.</param>
         /// <param name="typeFret">TypeFret.</param>
-        public Cargo(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFret) :base(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel)
+        public Cargo(string imo, string nom, string latitude, string longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFret) :base(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel)
         {
             this.typeFret = typeFret;
         }

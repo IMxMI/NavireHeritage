@@ -13,14 +13,14 @@ namespace NavireHeritage.ClassesMetier
         private readonly int nbPassagersMaxi;
         private readonly Dictionary<string, Passager> passagers;
 
-        public Croisiere(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, char typeNavireCroisiere, int nbPassagersMaxi)
+        public Croisiere(string imo, string nom, string latitude, string longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, char typeNavireCroisiere, int nbPassagersMaxi)
             : base(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel)
         {
             this.typeNavireCroisiere = typeNavireCroisiere;
             this.nbPassagersMaxi = nbPassagersMaxi;
         }
 
-        public Croisiere(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, char typeNavireCroisiere, int nbPassagersMaxi, Dictionary<string, Passager> passagers)
+        public Croisiere(string imo, string nom, string latitude, string longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, char typeNavireCroisiere, int nbPassagersMaxi, Dictionary<string, Passager> passagers)
             : base(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel)
         {
             this.typeNavireCroisiere = typeNavireCroisiere;
