@@ -263,16 +263,24 @@ namespace NavireHeritage.ClassesMetier
                 {
 					this.NavireArrives.Add(croisiere.Imo, croisiere);
                 }
-				else if(navire is Tanker tanker)
+				else
                 {
-
-                }
-				else if(navire is Cargo cargo)
-                {
-
+					this.ArriveeNavireCommerce(navire);
                 }
 				this.navireAttendus.Remove(navire.Imo);
             }
         }
+
+		private void ArriveeNavireCommerce(Navire navire)
+        {
+			if (navire is Tanker tanker)
+			{
+
+			}
+			else if (navire is Cargo cargo)
+			{
+
+			}
+		}
     }
 }
