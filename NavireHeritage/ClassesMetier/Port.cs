@@ -8,71 +8,71 @@ using Station.Interface;
 
 namespace NavireHeritage.ClassesMetier
 {
-     public class Port : IStationable
-    {
-        private readonly string nom;
-        private readonly string latitude;
-        private readonly string longitude;
-        private int nbPortique;
-        private int nbQuaisPassager;
-        private int nbQuaisTanker;
-        private int nbQuaisSuperTanker;
-        private readonly Dictionary<String, Navire> navireAttendus = new Dictionary<string, Navire>();
+	public class Port : IStationable
+	{
+		private readonly string nom;
+		private readonly string latitude;
+		private readonly string longitude;
+		private int nbPortique;
+		private int nbQuaisPassager;
+		private int nbQuaisTanker;
+		private int nbQuaisSuperTanker;
+		private readonly Dictionary<String, Navire> navireAttendus = new Dictionary<string, Navire>();
 		private readonly Dictionary<String, Navire> navireArrives = new Dictionary<string, Navire>();
 		private readonly Dictionary<String, Navire> navirePartis = new Dictionary<string, Navire>();
 		private readonly Dictionary<String, Navire> navireEnAttente = new Dictionary<string, Navire>();
 
-        public Port(string nom, string latitude, string longitude, int nbPortique, int nbQuaisPassager, int nbQuaisTanker, int nbQuaisSuperTanker)
-        {
-            this.nom = nom;
-            this.latitude = latitude;
-            this.longitude = longitude;
-            this.NbPortique = nbPortique;
-            this.NbQuaisPassager = nbQuaisPassager;
-            this.NbQuaisTanker = nbQuaisTanker;
-            this.NbQuaisSuperTanker = nbQuaisSuperTanker;
-        }
+		public Port(string nom, string latitude, string longitude, int nbPortique, int nbQuaisPassager, int nbQuaisTanker, int nbQuaisSuperTanker)
+		{
+			this.nom = nom;
+			this.latitude = latitude;
+			this.longitude = longitude;
+			this.NbPortique = nbPortique;
+			this.NbQuaisPassager = nbQuaisPassager;
+			this.NbQuaisTanker = nbQuaisTanker;
+			this.NbQuaisSuperTanker = nbQuaisSuperTanker;
+		}
 
-        public string Nom => nom;
+		public string Nom => nom;
 
-        public string Latitude => latitude;
+		public string Latitude => latitude;
 
-        public string Longitude => longitude;
+		public string Longitude => longitude;
 
-        public int NbPortique { get => nbPortique; set => nbPortique = value; }
-        public int NbQuaisPassager { get => nbQuaisPassager; set => nbQuaisPassager = value; }
-        public int NbQuaisTanker { get => nbQuaisTanker; set => nbQuaisTanker = value; }
-        public int NbQuaisSuperTanker { get => nbQuaisSuperTanker; set => nbQuaisSuperTanker = value; }
+		public int NbPortique { get => nbPortique; set => nbPortique = value; }
+		public int NbQuaisPassager { get => nbQuaisPassager; set => nbQuaisPassager = value; }
+		public int NbQuaisTanker { get => nbQuaisTanker; set => nbQuaisTanker = value; }
+		public int NbQuaisSuperTanker { get => nbQuaisSuperTanker; set => nbQuaisSuperTanker = value; }
 
-        internal Dictionary<string, Navire> NavireAttendus => navireAttendus;
+		internal Dictionary<string, Navire> NavireAttendus => navireAttendus;
 
-        internal Dictionary<string, Navire> NavireArrives => navireArrives;
+		internal Dictionary<string, Navire> NavireArrives => navireArrives;
 
-        internal Dictionary<string, Navire> NavirePartis => navirePartis;
+		internal Dictionary<string, Navire> NavirePartis => navirePartis;
 
-        internal Dictionary<string, Navire> NavireEnAttente => navireEnAttente;
+		internal Dictionary<string, Navire> NavireEnAttente => navireEnAttente;
 
-        public void EnregistrerArriveePrevue(Object objet)
-        {
-            if(objet is Navire navire)
-            {
-                if (!this.navireAttendus.ContainsKey(navire.Imo))
-                {
-                    this.navireAttendus.Add(navire.Imo, navire);
+		public void EnregistrerArriveePrevue(Object objet)
+		{
+			if (objet is Navire navire)
+			{
+				if (!this.navireAttendus.ContainsKey(navire.Imo))
+				{
+					this.navireAttendus.Add(navire.Imo, navire);
 
-                }
-                else
-                {
-                    throw new Exception("Le navire " + navire.Imo + " est déja enregistré dans le port.");
-                }
-            }
-            else
-            {
-                throw new Exception("L'objet n'est pas un navire.");
-            }
-        }           
+				}
+				else
+				{
+					throw new Exception("Le navire " + navire.Imo + " est déja enregistré dans le port.");
+				}
+			}
+			else
+			{
+				throw new Exception("L'objet n'est pas un navire.");
+			}
+		}
 
-       public void EnregistrerDepart(Object objet)
+		public void EnregistrerDepart(Object objet)
 		{
 			if (objet is Navire navire)
 			{
@@ -86,14 +86,14 @@ namespace NavireHeritage.ClassesMetier
 					throw new Exception($"Le navire {navire.Imo} n'est pas dans le port");
 				}
 			}
-			
+
 		}
 
 		public void EnregistrerDepart(string imo)
 		{
 			if (navireArrives.ContainsKey(imo))
 			{
-				foreach(Navire navire in navireArrives.Values)
+				foreach (Navire navire in navireArrives.Values)
 				{
 					navirePartis.Add(navire.Imo, navire);
 					navireArrives.Remove(imo);
@@ -105,7 +105,7 @@ namespace NavireHeritage.ClassesMetier
 			}
 		}
 
- /// <summary>
+		/// <summary>
 		/// Ajout du navire passé en paramètre dans le
 		/// dictionnaire des navires en attente d'un quai dans le port
 		/// </summary>
@@ -214,12 +214,12 @@ namespace NavireHeritage.ClassesMetier
 		public int GetNbTankerArrives()
 		{
 			int count = 0;
-			foreach(Tanker navire in navireArrives.Values)
+			foreach (Tanker navire in navireArrives.Values)
 			{
-					if (navire.TonnageGT <= 130000)
-					{
-						count++;
-					}
+				if (navire.TonnageGT <= 130000)
+				{
+					count++;
+				}
 			}
 			return count;
 		}
@@ -227,7 +227,7 @@ namespace NavireHeritage.ClassesMetier
 		public int GetNbSuperTankerArrives()
 		{
 			int count = 0;
-			foreach(Tanker navire in navireArrives.Values)
+			foreach (Tanker navire in navireArrives.Values)
 			{
 				if (navire.TonnageGT > 130000)
 				{
@@ -253,28 +253,29 @@ namespace NavireHeritage.ClassesMetier
 			return $"Port de {nom}\n\tCoordonnées GPS : {latitude} / {longitude}\n\tNb portiques : {nbPortique}\n\tNb quas croisière : {nbQuaisPassager}\n\tNb quais tanker : {nbQuaisTanker}\n\tNb quais super tankers : {nbQuaisSuperTanker}\n\tNb Navires à quai : {navireArrives.Count}\n\tNb navires attendus : {navireAttendus.Count}\n\tNb navires partis : {navirePartis.Count}\n\tNb navires en attente : {navireEnAttente.Count}\n\nNombre de cargos dans le port : {GetNbCargoArrives()}\nNombre de tankers dans le port : {GetNbTankerArrives()}\nNombre de super tankers dans le port : {GetNbSuperTankerArrives()}";
 		}
 
-        public void EnregistrerArrivee(object objet)
-        {
+		public void EnregistrerArrivee(object objet)
+		{
 			Navire navire = (Navire)objet;
 
 			if (EstAttendu(navire.Imo))
-            {
-				if(navire is Croisiere croisiere)
-                {
+			{
+				if (navire is Croisiere croisiere)
+				{
 					this.NavireArrives.Add(croisiere.Imo, croisiere);
-                }
+				}
 				else
-                {
+				{
 					this.ArriveeNavireCommerce(navire);
-                }
+				}
 				this.navireAttendus.Remove(navire.Imo);
-            }
-        }
+			}
+		}
 
 		private void ArriveeNavireCommerce(Navire navire)
-        {
+		{
 			if (navire is Tanker tanker)
 			{
+
 
 			}
 			else if (navire is Cargo cargo)
@@ -282,5 +283,5 @@ namespace NavireHeritage.ClassesMetier
 
 			}
 		}
-    }
+	}
 }
