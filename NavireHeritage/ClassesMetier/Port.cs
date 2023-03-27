@@ -56,15 +56,15 @@ namespace NavireHeritage.ClassesMetier
 				}
 		}
 
-        public void EnregistrerArrivee(Object objet)
+		public void EnregistrerArrivee(Object objet)
 		{
 			if (objet is Navire navire)
 			{
-				if(navire is Croisiere croisiere)
+				if (navire is Croisiere croisiere)
 				{
 					NavireCroisiereArrive(croisiere);
 				}
-				else if(navire is Cargo cargo)
+				else if (navire is Cargo cargo)
 				{
 					if (navireAttendus.ContainsKey(navire.Imo))
 					{
@@ -75,7 +75,7 @@ namespace NavireHeritage.ClassesMetier
 						CargoInnattendu(cargo.Imo, cargo.Nom, cargo.Latitude, cargo.Longitude, cargo.TonnageGT, cargo.TonnageDWT, cargo.TonnageActuel, cargo.TypeFret);
 					}
 				}
-				else if(navire is Tanker tanker)
+				else if (navire is Tanker tanker)
 				{
 					if (navireAttendus.ContainsKey(navire.Imo))
 					{
@@ -93,7 +93,9 @@ namespace NavireHeritage.ClassesMetier
 			}
 		}
 
-		
+
+
+
 		private void NavireCroisiereArrive(Croisiere croisiere)
 		{
 			navireArrives.Add(croisiere.Imo, croisiere);
@@ -136,7 +138,7 @@ namespace NavireHeritage.ClassesMetier
 			}
 		}
 
-		private void CargoInnattendu(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFret)
+		private void CargoInnattendu(string imo, string nom, string latitude, string longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFret)
 		{
 			Cargo cargo = new Cargo(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel, typeFret);
 			if (GetNbCargoArrives() < nbPortique)
@@ -151,7 +153,7 @@ namespace NavireHeritage.ClassesMetier
 			}
 		}
 
-		private void TankerInnattendu(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFluide)
+		private void TankerInnattendu(string imo, string nom, string latitude, string longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFluide)
 		{
 			Tanker tanker = new Tanker(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel, typeFluide);
 			if(tanker.TonnageGT <= 130000)
@@ -291,12 +293,14 @@ namespace NavireHeritage.ClassesMetier
 		{
 			if (navireArrives.ContainsKey(imo))
 			{
-				foreach(Navire navire in navireArrives.Values)
+				int i = 0;
+				while(i < navireArrives.Count && navireArrives.ElementAt(i).Key != imo)
 				{
-					navirePartis.Add(navire.Imo, navire);
-					navireArrives.Remove(imo);
-					Console.WriteLine($"Le navire {imo} a quitté le port");
+					i++;
 				}
+				navirePartis.Add(imo, navireArrives.ElementAt(i).Value);
+				navireArrives.Remove(imo);
+				Console.WriteLine($"Le navire {imo} a quitté le port");
 			}
 			else
 			{
@@ -413,9 +417,9 @@ namespace NavireHeritage.ClassesMetier
 		public int GetNbTankerArrives()
 		{
 			int count = 0;
-			foreach(Tanker navire in navireArrives.Values)
+			foreach(Navire navire in navireArrives.Values)
 			{
-					if (navire.TonnageGT <= 130000)
+					if (navire is Tanker && navire.TonnageGT <= 130000)
 					{
 						count++;
 					}
@@ -426,9 +430,13 @@ namespace NavireHeritage.ClassesMetier
 		public int GetNbCroisiereArrives()
 		{
 			int count = 0;
-			foreach(Croisiere croisiere in navireArrives.Values)
+			foreach(Navire navire in navireArrives.Values)
 			{
-				count++;
+				if(navire is Croisiere)
+				{
+					count++;
+				}
+				
 			}
 			return count;
 		}
@@ -436,9 +444,9 @@ namespace NavireHeritage.ClassesMetier
 		public int GetNbSuperTankerArrives()
 		{
 			int count = 0;
-			foreach(Tanker navire in navireArrives.Values)
+			foreach(Navire navire in this.navireArrives.Values)
 			{
-				if (navire.TonnageGT > 130000)
+				if (navire is Tanker && navire.TonnageGT > 130000)
 				{
 					count++;
 				}
@@ -449,9 +457,12 @@ namespace NavireHeritage.ClassesMetier
 		public int GetNbCargoArrives()
 		{
 			int count = 0;
-			foreach (Cargo navire in navireArrives.Values)
+			foreach (Navire navire in navireArrives.Values)
 			{
-				count++;
+				if(navire is Cargo)
+				{
+					count++;
+				}
 			}
 			return count;
 		}

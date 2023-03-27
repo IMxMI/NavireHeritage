@@ -14,7 +14,7 @@
 
 
 
-        public Stockage(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, int numero, int capaciteMaxi, int capaciteDispo) : base ( imo,  nom,  latitude,  longitude,  tonnageGT,  tonnageDWT,  tonnageActuel)
+        public Stockage(string imo, string nom, string latitude, string longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, int numero, int capaciteMaxi, int capaciteDispo) : base ( imo,  nom,  latitude,  longitude,  tonnageGT,  tonnageDWT,  tonnageActuel)
         {
             this.numero = numero;
             this.CapaciteMaxi = capaciteMaxi;
@@ -40,7 +40,7 @@
         /// <param name="tonnageActuel">TonnageActuel.</param>
         /// <param name="numero">Numero.</param>
         /// <param name="capaciteMaxi">CapaciteMaxi.</param>
-        public Stockage(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, int numero, int capaciteMaxi)
+        public Stockage(string imo, string nom, string latitude, string longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, int numero, int capaciteMaxi)
             : this(imo, nom, latitude, longitude, tonnageGT, tonnageDWT, tonnageActuel, numero, capaciteMaxi, capaciteMaxi) { }
     }
 }

@@ -9,7 +9,7 @@
     class Tanker : Navire, Station.Interface.INavCommercable
     {
         private string typeFluide;
-        public Tanker(string imo, string nom, double latitude, double longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFluide) : base( imo,  nom,  latitude,  longitude,  tonnageGT,  tonnageDWT,  tonnageActuel)
+        public Tanker(string imo, string nom, string latitude, string longitude, int tonnageGT, int tonnageDWT, int tonnageActuel, string typeFluide) : base( imo,  nom,  latitude,  longitude,  tonnageGT,  tonnageDWT,  tonnageActuel)
         {
             this.typeFluide = typeFluide;
         }
